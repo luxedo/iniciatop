@@ -1,0 +1,32 @@
+.título-do-app {
+  margin-top: 1em;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+.div-titulo {
+  padding:0 !important;
+}
+
+.jogador-na-lista {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-width: 0 0 0.5em 0;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.7);
+}
+
+.nome-jogador, .numero-jogador {
+  margin-top: 0.3em;
+}
+
+.div-adicionar-jogador {
+  margin-top: 2em;
+}
+
+fa {
+  vertical-align: bottom;
+}
+
+h1 {
+  font-size: 4.5em !important;
+}
