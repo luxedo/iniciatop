@@ -17,7 +17,6 @@ $(document).ready (() => {
     for (let i=0; i<jogadores.length; i++) {
       let jogador = jogadores[i];
       colocarJogadorNoDOM(jogador.classe, jogador.nome, jogador.numero)
-      console.log(jogador.numero);
     }
     ordenarJogadores();
   }
@@ -82,7 +81,6 @@ function aceitarNumero(jogadorClasse) {
     if (Storage !== null) {
       let jogadores = pegarJogadores();
       let nome = $(`.${jogadorClasse}-nome-texto`).text();
-      console.log(nome, `.${jogadorClasse}-nome-texto`);
       jogadores = jogadores.filter(jogador => jogador.classe !== jogadorClasse);
       jogadores.push({nome: nome, numero: novoNumero, classe: jogadorClasse})
       localStorage.setItem("jogadores", JSON.stringify(jogadores));
@@ -184,8 +182,10 @@ function colocarJogadorNoDOM(jogadorClasse, nome, numero) {
     if (e.keyCode == 13) aceitarNumero(jogadorClasse);
     if (e.keyCode == 27) toggleNumero(jogadorClasse);
   });
+  $(`.${jogadorClasse}-numero-input`).submit(() => aceitarNumero(jogadorClasse))
   $(`.${jogadorClasse}-nome-input`).keyup((e) => {
     if (e.keyCode == 13) aceitarNome(jogadorClasse);
     if (e.keyCode == 27) toggleNome(jogadorClasse);
   });
+  $(`.${jogadorClasse}-nome-input`).submit(() => aceitarNome(jogadorClasse))
 }
