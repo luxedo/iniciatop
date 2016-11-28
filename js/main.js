@@ -179,14 +179,6 @@ function colocarJogadorNoDOM(jogadorClasse, nome, numero) {
   `);
   $(`.${jogadorClasse}-numero-edit`).hide();
   $(`.${jogadorClasse}-nome-edit`).hide();
-  $(`.${jogadorClasse}-numero-input`).keyup((e) => {
-    if (e.keyCode == 13) aceitarNumero(jogadorClasse);
-    if (e.keyCode == 27) toggleNumero(jogadorClasse);
-  });
-  $(`.${jogadorClasse}-numero-input`).submit(() => aceitarNumero(jogadorClasse))
-  $(`.${jogadorClasse}-nome-input`).keyup((e) => {
-    if (e.keyCode == 13) aceitarNome(jogadorClasse);
-    if (e.keyCode == 27) toggleNome(jogadorClasse);
-  });
-  $(`.${jogadorClasse}-nome-input`).submit(() => aceitarNome(jogadorClasse))
+  $(`.${jogadorClasse}-numero-input`).change(() => aceitarNumero(jogadorClasse));
+  $(`.${jogadorClasse}-nome-input`).change(() => aceitarNome(jogadorClasse));
 }
