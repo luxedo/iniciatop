@@ -1,5 +1,6 @@
 let arrayDeJogadores = []
 $(document).ready (() => {
+
   $(".player-input").keyup((e) => {
     if (e.keyCode == 13) adicionarJogador();
   });
@@ -16,7 +17,7 @@ $(document).ready (() => {
     let jogadores = pegarJogadores();
     for (let i=0; i<jogadores.length; i++) {
       let jogador = jogadores[i];
-      colocarJogadorNoDOM(jogador.classe, jogador.nome, jogador.numero)
+      colocarJogadorNoDOM(jogador.classe, jogador.nome  , jogador.numero)
     }
     ordenarJogadores();
   }
