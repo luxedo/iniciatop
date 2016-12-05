@@ -62,10 +62,15 @@ function adicionarJogador() {
 
 
 function escolherNumero(jogadorClasse) {
-  $(`.${jogadorClasse}-numero-edit`).toggle();
-  $(`.${jogadorClasse}-numero-div`).toggle();
-  $(`.${jogadorClasse}-numero-input`).focus();
-  $(`.${jogadorClasse}-numero-input`).select();
+  if ($(`.${jogadorClasse}`).hasClass('highlight')) {
+    $(`.${jogadorClasse}-numero-edit`).toggle();
+    $(`.${jogadorClasse}-numero-div`).toggle();
+    $(`.${jogadorClasse}-numero-input`).focus();
+    $(`.${jogadorClasse}-numero-input`).select();
+    $(`.${jogadorClasse}-numero-input`).val($(`.${jogadorClasse}-numero-texto`).text());
+  } else {
+    highlightJogador(jogadorClasse)
+  }
 }
 
 function toggleNumero(jogadorClasse) {
@@ -90,10 +95,15 @@ function aceitarNumero(jogadorClasse) {
 }
 
 function escolherNome(jogadorClasse) {
-  $(`.${jogadorClasse}-nome-edit`).toggle();
-  $(`.${jogadorClasse}-nome-div`).toggle();
-  $(`.${jogadorClasse}-nome-input`).focus();
-  $(`.${jogadorClasse}-nome-input`).select();
+  if ($(`.${jogadorClasse}`).hasClass('highlight')) {
+    $(`.${jogadorClasse}-nome-edit`).toggle();
+    $(`.${jogadorClasse}-nome-div`).toggle();
+    $(`.${jogadorClasse}-nome-input`).focus();
+    $(`.${jogadorClasse}-nome-input`).select();
+    $(`.${jogadorClasse}-nome-input`).val($(`.${jogadorClasse}-nome-texto`).text());
+  } else {
+    highlightJogador(jogadorClasse)
+  }
 }
 
 function toggleNome(jogadorClasse) {
@@ -151,9 +161,9 @@ function colocarJogadorNoDOM(jogadorClasse, nome, numero) {
   numero = (numero === undefined || numero === null? 0: numero)
   $(".lista-dos-jogadores").append(`
     <div class="${jogadorClasse} row jogador-na-lista animated fadeIn">
-      <div class="col-xs-5">
+      <div class="col-xs-7">
         <div class="col-xs-12 ${jogadorClasse}-nome-div">
-          <a href="#" onclick="escolherNome('${jogadorClasse}');" class="${jogadorClasse}-nome-link"><h3 class="${jogadorClasse}-nome-texto">${nome}</h3></a>
+          <a onclick="escolherNome('${jogadorClasse}');" class="${jogadorClasse}-nome-link"><h3 class="${jogadorClasse}-nome-texto">${nome}</h3></a>
         </div>
         <div class="col-xs-12 ${jogadorClasse}-nome-edit edit-div">
           <input type="text" class="${jogadorClasse}-nome-input edit" placeholder="Novo nome">
@@ -162,23 +172,21 @@ function colocarJogadorNoDOM(jogadorClasse, nome, numero) {
 
       <div class="col-xs-3">
         <div class="col-xs-12 ${jogadorClasse}-numero-div">
-          <a href="#" onclick="escolherNumero('${jogadorClasse}');" class="${jogadorClasse}-numero-link"><h3 class="${jogadorClasse}-numero-texto">${numero}</h3></a>
+          <a onclick="escolherNumero('${jogadorClasse}');" class="${jogadorClasse}-numero-link"><h3 class="${jogadorClasse}-numero-texto">${numero}</h3></a>
         </div>
         <div class="col-xs-12 ${jogadorClasse}-numero-edit edit-div">
           <input type="number" class="${jogadorClasse}-numero-input edit" placeholder="Iniciativa" style="width: 4em;">
         </div>
-
       </div>
       <div class="col-xs-2 bottom" style="margin-top: 0.7em">
-        <a href="#" onclick="highlightJogador('${jogadorClasse}');" class="${jogadorClasse}-highlight"><i class="fa fa-arrow-circle-o-up fa-3x"></i></a>
-      </div>
-      <div class="col-xs-2 bottom" style="margin-top: 0.7em">
-        <a href="#" onclick="deletarJogador('${jogadorClasse}');" class="${jogadorClasse}-delete"><i class="fa fa-times fa-3x"></i></a>
+        <a onclick="deletarJogador('${jogadorClasse}');" class="${jogadorClasse}-delete"><i class="fa fa-times fa-3x"></i></a>
       </div>
     </div>
   `);
   $(`.${jogadorClasse}-numero-edit`).hide();
   $(`.${jogadorClasse}-nome-edit`).hide();
   $(`.${jogadorClasse}-numero-input`).change(() => aceitarNumero(jogadorClasse));
+  $(`.${jogadorClasse}-numero-input`).focusout(() => aceitarNumero(jogadorClasse));
   $(`.${jogadorClasse}-nome-input`).change(() => aceitarNome(jogadorClasse));
+  $(`.${jogadorClasse}-nome-input`).focusout(() => aceitarNome(jogadorClasse));
 }
