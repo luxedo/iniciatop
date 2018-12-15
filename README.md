@@ -2,7 +2,7 @@
 
 Esse é um app mal feito em 3h pra deixar mais facil o controle da iniciativa no RPG.
 
-Veja funcionando https://iniciatop.herokuapp.com/
+Veja funcionando https://github.com/luxedo/iniciatop
 
 ## A fazer:
 
