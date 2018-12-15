@@ -145,7 +145,7 @@ function ordenarJogadores() {
     let nomeDoElemento = $(`.${jogadorClasse}-nome-texto`).text();
     ordem.push([jogadorClasse, nomeDoElemento, iniciativaDoElemento]);
   });
-  ordem = ordem.sort((prev, value) => prev[2]<value[2]);
+  ordem = ordem.sort((prev, value) => value[2]-prev[2]);
   $(".lista-dos-jogadores").empty();
   ordem.forEach(value => colocarJogadorNoDOM(...value));
 }
